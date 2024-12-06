@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbymwuim7n0c2"
+path="res://.godot/imported/Papai akita lançando a braba sobre PHP.mp3-de680115e28b7175e1310848c8e0cdc2.mp3str"
+
+[deps]
+
+source_file="res://assets/Papai akita lançando a braba sobre PHP.mp3"
+dest_files=["res://.godot/imported/Papai akita lançando a braba sobre PHP.mp3-de680115e28b7175e1310848c8e0cdc2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

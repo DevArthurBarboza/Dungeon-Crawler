@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqqbq401pyns6"]
+
+[ext_resource type="PackedScene" uid="uid://dtvb1fvomlmbt" path="res://scenes/collectable/collectable_component.tscn" id="1_u2avc"]
+[ext_resource type="Texture2D" uid="uid://5be5xhgtx0of" path="res://assets/Tiny Swords (Update 010)/Resources/Resources/M_Spawn.png" id="2_v5ev0"]
+
+[sub_resource type="Animation" id="Animation_crf0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vbrnk"]
+resource_name = "spawn"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37138"]
+_data = {
+"RESET": SubResource("Animation_crf0b"),
+"spawn": SubResource("Animation_vbrnk")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7kfx"]
+radius = 36.0
+
+[node name="Meat" instance=ExtResource("1_u2avc")]
+
+[node name="Texture" parent="." index="0"]
+position = Vector2(-3, -13)
+texture = ExtResource("2_v5ev0")
+hframes = 7
+
+[node name="Animation" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_37138")
+}
+autoplay = "spawn"
+
+[node name="Collision" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_g7kfx")

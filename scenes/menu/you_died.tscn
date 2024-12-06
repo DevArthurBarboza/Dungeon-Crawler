@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq5esxird5kgc"]
+
+[ext_resource type="Script" path="res://scripts/menu/you_died.gd" id="1_xxjdc"]
+
+[node name="YouDied" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxjdc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="again" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tentar de Novo"
+
+[node name="menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Voltar ao Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/menu" to="." method="_on_menu_pressed"]

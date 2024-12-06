@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://32wldk8463qh"]
+
+[ext_resource type="PackedScene" uid="uid://bhx4nu1m1cxfq" path="res://scenes/decoration/decoration_component.tscn" id="1_qo7qc"]
+[ext_resource type="Script" path="res://scripts/decoration/signs/decoration_sign.gd" id="2_m0khw"]
+
+[node name="DecorationSign" instance=ExtResource("1_qo7qc")]
+script = ExtResource("2_m0khw")
+_textures_list = Array[String](["res://assets/Tiny Swords (Update 010)/Decoration/Signs/16.png", "res://assets/Tiny Swords (Update 010)/Decoration/Signs/17.png", "res://assets/Tiny Swords (Update 010)/Decoration/Signs/18.png"])
+
+[node name="Texture" parent="." index="0"]
+position = Vector2(0, -64)
+offset = Vector2(0, 0)
+
+[node name="Texture2" parent="." index="1"]
+visible = false
+
+[node name="Texture3" parent="." index="2"]
+visible = false

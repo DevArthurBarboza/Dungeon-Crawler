@@ -1,0 +1,184 @@
+[gd_scene load_steps=24 format=3 uid="uid://bx23qqetedgw7"]
+
+[ext_resource type="PackedScene" uid="uid://cerddopmttyc2" path="res://scenes/map/terrain/terrain_2.tscn" id="1_dmc3n"]
+[ext_resource type="Texture2D" uid="uid://bdcuddt3db683" path="res://assets/Tiny Swords (Update 010)/Terrain/Bridge/Bridge_All.png" id="2_oo6sp"]
+[ext_resource type="Script" path="res://scripts/interactables/bridge_area.gd" id="3_uy037"]
+[ext_resource type="PackedScene" uid="uid://dmgq36rdktagg" path="res://scenes/character/pawn.tscn" id="4_wyrdv"]
+[ext_resource type="PackedScene" uid="uid://dcxtc27565p3o" path="res://scenes/decoration/mushroom.tscn" id="5_pwnbm"]
+[ext_resource type="PackedScene" uid="uid://b2sybe3raatx6" path="res://scenes/decoration/rocks.tscn" id="6_gyxx0"]
+[ext_resource type="PackedScene" uid="uid://dty5lo7f8nbdy" path="res://scenes/decoration/bushes.tscn" id="7_w43ih"]
+[ext_resource type="PackedScene" uid="uid://0qbhfhrfyydn" path="res://scenes/decoration/small_grass.tscn" id="8_oanu6"]
+[ext_resource type="PackedScene" uid="uid://6g2lou6px0be" path="res://scenes/decoration/pumpkins.tscn" id="9_tpnwm"]
+[ext_resource type="PackedScene" uid="uid://bixxspj615kb5" path="res://scenes/decoration/bones.tscn" id="10_ltllq"]
+[ext_resource type="PackedScene" uid="uid://32wldk8463qh" path="res://scenes/decoration/signs/decoration_sign.tscn" id="11_102mn"]
+[ext_resource type="PackedScene" uid="uid://d2i5xb4ga0a3u" path="res://scenes/interactables/tree.tscn" id="12_hwjfo"]
+[ext_resource type="PackedScene" uid="uid://baobwb6k6vnn2" path="res://scenes/interactables/sheep.tscn" id="13_8g8fk"]
+[ext_resource type="PackedScene" uid="uid://dp1anqnodhovq" path="res://scenes/interactables/gold_mine.tscn" id="14_2v284"]
+[ext_resource type="PackedScene" uid="uid://djnm02hx1i8uw" path="res://scenes/character/goblin.tscn" id="15_kxult"]
+[ext_resource type="PackedScene" uid="uid://blbbka4j6omet" path="res://scenes/interactables/ladder_area.tscn" id="16_aqmmw"]
+[ext_resource type="PackedScene" uid="uid://b7jde1mx2fwpo" path="res://scenes/enemies/spawner.tscn" id="16_jbrdk"]
+[ext_resource type="PackedScene" uid="uid://me8u7idbkhdx" path="res://Interfaces/hud.tscn" id="17_cbc4g"]
+[ext_resource type="PackedScene" uid="uid://crkkpmhxuo8dq" path="res://scenes/interactables/house.tscn" id="17_kl2b7"]
+[ext_resource type="PackedScene" uid="uid://dpbt1tcdft85" path="res://scenes/effects/time_cicle.tscn" id="18_dieew"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xe77s"]
+texture = ExtResource("2_oo6sp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -32, 32, -32, 32, -16, -16, -16)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, 16, 32, 16, 32, 32, -16, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, -32, -16, 32, -16)
+1:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(32, 16, -32, 16, -32, 32, 32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -32, -32, -32, -32, -16, 16, -16)
+2:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, 16, -32, 16, -32, 32, 16, 32)
+
+[sub_resource type="TileSet" id="TileSet_aaf64"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_xe77s")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjpde"]
+size = Vector2(2092, 32)
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="TerrainManager" parent="." instance=ExtResource("1_dmc3n")]
+
+[node name="Bridge" type="TileMap" parent="."]
+z_index = 1
+position = Vector2(1829, -539)
+tile_set = SubResource("TileSet_aaf64")
+format = 2
+layer_0/tile_data = PackedInt32Array(262150, 65536, 0, 262151, 65536, 0, 262152, 65536, 0, 262149, 65536, 0, 262148, 65536, 0, 262145, 0, 0, 262146, 65536, 0, 262147, 65536, 0, 262153, 65536, 0, 262154, 65536, 0, 262155, 65536, 0, 262156, 65536, 0, 262157, 65536, 0, 262158, 65536, 0, 262159, 65536, 0, 262160, 65536, 0, 262161, 65536, 0, 262162, 65536, 0, 262163, 65536, 0, 262164, 65536, 0, 262165, 65536, 0, 262166, 65536, 0, 262167, 65536, 0, 262168, 65536, 0, 262169, 65536, 0, 262170, 65536, 0, 262171, 65536, 0, 262172, 65536, 0, 262173, 65536, 0, 262174, 65536, 0, 262176, 65536, 0, 262177, 65536, 0, 262175, 65536, 0, 262178, 131072, 0)
+
+[node name="BridgeArea" type="Area2D" parent="Bridge"]
+position = Vector2(442, 288)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_uy037")
+
+[node name="Collision" type="CollisionShape2D" parent="Bridge/BridgeArea"]
+position = Vector2(710, 0)
+shape = SubResource("RectangleShape2D_yjpde")
+
+[node name="Decorations" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Decorations" groups=["player"] instance=ExtResource("4_wyrdv")]
+position = Vector2(548, 234)
+platform_on_leave = 0
+_max_attack = 3
+is_controlled_by_player = true
+
+[node name="Mushroom" parent="Decorations" instance=ExtResource("5_pwnbm")]
+position = Vector2(-64, 384)
+
+[node name="Rocks" parent="Decorations" instance=ExtResource("6_gyxx0")]
+position = Vector2(-96, 576)
+
+[node name="Rocks2" parent="Decorations" instance=ExtResource("6_gyxx0")]
+position = Vector2(-75, -177)
+
+[node name="Rocks3" parent="Decorations" instance=ExtResource("6_gyxx0")]
+position = Vector2(1280, 634)
+
+[node name="Bushes" parent="Decorations" instance=ExtResource("7_w43ih")]
+position = Vector2(145, -33)
+
+[node name="SmallGrass" parent="Decorations" instance=ExtResource("8_oanu6")]
+position = Vector2(925, 260)
+
+[node name="Pumpkins" parent="Decorations" instance=ExtResource("9_tpnwm")]
+position = Vector2(192, 128)
+
+[node name="Bones" parent="Decorations" instance=ExtResource("10_ltllq")]
+position = Vector2(1704, -244)
+
+[node name="DecorationSign" parent="Decorations" instance=ExtResource("11_102mn")]
+position = Vector2(1014, 525)
+
+[node name="Tree" parent="Decorations" instance=ExtResource("12_hwjfo")]
+position = Vector2(1466, 374)
+
+[node name="Tree2" parent="Decorations" node_paths=PackedStringArray("_animation", "_health_component") instance=ExtResource("12_hwjfo")]
+position = Vector2(1301, -118)
+_animation = NodePath("../Tree/Animation")
+_health_component = NodePath("../Tree/HealthComponent")
+
+[node name="Tree3" parent="Decorations" node_paths=PackedStringArray("_animation", "_health_component") instance=ExtResource("12_hwjfo")]
+position = Vector2(326, -243)
+_animation = NodePath("../Tree/Animation")
+_health_component = NodePath("../Tree/HealthComponent")
+
+[node name="Tree4" parent="Decorations" node_paths=PackedStringArray("_animation", "_health_component") instance=ExtResource("12_hwjfo")]
+position = Vector2(297, 429)
+_animation = NodePath("../Tree/Animation")
+_health_component = NodePath("../Tree/HealthComponent")
+
+[node name="Sheep" parent="Decorations" instance=ExtResource("13_8g8fk")]
+position = Vector2(-1936, 61)
+motion_mode = 1
+platform_on_leave = 2
+
+[node name="GoldMine" parent="Decorations" instance=ExtResource("14_2v284")]
+position = Vector2(966, -200)
+
+[node name="Goblin" parent="Decorations" instance=ExtResource("15_kxult")]
+position = Vector2(765, -93)
+
+[node name="Spawner" parent="Decorations" instance=ExtResource("16_jbrdk")]
+position = Vector2(1675, 532)
+
+[node name="Spawner3" parent="Decorations" instance=ExtResource("16_jbrdk")]
+position = Vector2(492, 546)
+
+[node name="Spawner2" parent="Decorations" instance=ExtResource("16_jbrdk")]
+position = Vector2(1572, -103)
+
+[node name="House" parent="Decorations" instance=ExtResource("17_kl2b7")]
+position = Vector2(4976, 286)
+
+[node name="Pawn" parent="Decorations" instance=ExtResource("4_wyrdv")]
+position = Vector2(949, -48)
+
+[node name="GoldMine2" parent="Decorations" instance=ExtResource("14_2v284")]
+position = Vector2(5146, -242)
+
+[node name="Sheep2" parent="Decorations" instance=ExtResource("13_8g8fk")]
+position = Vector2(4688, 43)
+
+[node name="Sheep3" parent="Decorations" instance=ExtResource("13_8g8fk")]
+position = Vector2(4101, 255)
+
+[node name="Sheep4" parent="Decorations" instance=ExtResource("13_8g8fk")]
+position = Vector2(4489, 343)
+
+[node name="Ladders" type="Node2D" parent="."]
+
+[node name="LadderArea" parent="Ladders" instance=ExtResource("16_aqmmw")]
+position = Vector2(1880, -281)
+_is_revert = true
+
+[node name="LadderArea2" parent="Ladders" instance=ExtResource("16_aqmmw")]
+position = Vector2(4021, -280)
+
+[node name="HUD" parent="." instance=ExtResource("17_cbc4g")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.605585, 0.68198, 0.625119, 1)
+
+[node name="TimeCicle" parent="." instance=ExtResource("18_dieew")]
+visible = false
+
+[connection signal="body_entered" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_exited"]

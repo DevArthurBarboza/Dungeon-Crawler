@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bs6uqe7p7wu06"]
+
+[ext_resource type="PackedScene" uid="uid://dtvb1fvomlmbt" path="res://scenes/collectable/collectable_component.tscn" id="1_nemqh"]
+[ext_resource type="Texture2D" uid="uid://cogbnkurf88jg" path="res://assets/Tiny Swords (Update 010)/Resources/Resources/G_Spawn.png" id="2_frwts"]
+
+[sub_resource type="Animation" id="Animation_hiiou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_d7suh"]
+resource_name = "spawn"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgtym"]
+_data = {
+"RESET": SubResource("Animation_hiiou"),
+"spawn": SubResource("Animation_d7suh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ie6ba"]
+radius = 36.0
+
+[node name="Gold" instance=ExtResource("1_nemqh")]
+
+[node name="Texture" parent="." index="0"]
+position = Vector2(-5, -10)
+texture = ExtResource("2_frwts")
+hframes = 7
+
+[node name="Animation" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_rgtym")
+}
+autoplay = "spawn"
+
+[node name="Collision" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_ie6ba")

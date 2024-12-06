@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbt1tcdft85"]
+
+[ext_resource type="Script" path="res://scripts/effects/TimeCicle.gd" id="1_qljhu"]
+[ext_resource type="Texture2D" uid="uid://cgwxc66qkoffr" path="res://assets/textures/daynightcycle-gradient-texture.tres" id="2_feru3"]
+
+[node name="TimeCicle" type="Node2D"]
+script = ExtResource("1_qljhu")
+gradient = ExtResource("2_feru3")
+
+[node name="canvas" type="CanvasModulate" parent="."]

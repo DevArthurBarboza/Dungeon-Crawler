@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://c82st6ig305ax"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_6668f"]
+[ext_resource type="PackedScene" uid="uid://cmjiivjcqi5rr" path="res://scenes/map/game_level_1.tscn" id="2_iwbip"]
+
+[sub_resource type="Animation" id="Animation_r57a3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gnm5s"]
+resource_name = "reveal"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.133972),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_npdcr"]
+_data = {
+"RESET": SubResource("Animation_r57a3"),
+"reveal": SubResource("Animation_gnm5s")
+}
+
+[node name="Menu" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6668f")
+first_level = ExtResource("2_iwbip")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_right = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="GameLevel" parent="bg" instance=ExtResource("2_iwbip")]
+show_behind_parent = true
+z_index = -1
+_is_menu = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_npdcr")
+}
+autoplay = "reveal"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -52.5
+offset_right = 90.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+expand_mode = 4
+
+[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 5
+layout_mode = 2
+text = "JOGAR
+"
+
+[node name="Credit" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 5
+layout_mode = 2
+text = "CRÉDITOS
+"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 5
+layout_mode = 2
+text = "SAIR
+"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

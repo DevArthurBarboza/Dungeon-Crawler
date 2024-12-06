@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp1anqnodhovq"]
+
+[ext_resource type="Texture2D" uid="uid://7n8fdhmgy2fx" path="res://assets/Tiny Swords (Update 010)/Resources/Gold Mine/GoldMine_Destroyed.png" id="1_cm34h"]
+[ext_resource type="Script" path="res://scripts/interactables/gold_mine.gd" id="1_wb47c"]
+[ext_resource type="AudioStream" uid="uid://c5rrte0xigfro" path="res://assets/sounds/gold-mining.mp3" id="3_8s65j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35okt"]
+size = Vector2(157, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rc58d"]
+radius = 96.0
+
+[node name="GoldMine" type="StaticBody2D" node_paths=PackedStringArray("_sprite", "_production_timer", "_spawn_timer")]
+script = ExtResource("1_wb47c")
+_sprite = NodePath("Texture")
+_production_timer = NodePath("ProductionTimer")
+_spawn_timer = NodePath("SpawnTimer")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_cm34h")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 16)
+shape = SubResource("RectangleShape2D_35okt")
+
+[node name="GoldMineArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="Collision" type="CollisionShape2D" parent="GoldMineArea"]
+visible = false
+shape = SubResource("CircleShape2D_rc58d")
+
+[node name="ProductionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8s65j")
+
+[connection signal="body_entered" from="GoldMineArea" to="." method="_on_gold_mine_area_body_entered"]
+[connection signal="body_exited" from="GoldMineArea" to="." method="_on_gold_mine_area_body_exited"]
+[connection signal="timeout" from="ProductionTimer" to="." method="_on_production_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

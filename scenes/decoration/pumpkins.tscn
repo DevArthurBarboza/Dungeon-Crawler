@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6g2lou6px0be"]
+
+[ext_resource type="PackedScene" uid="uid://bhx4nu1m1cxfq" path="res://scenes/decoration/decoration_component.tscn" id="1_iopcb"]
+
+[node name="Pumpkins" instance=ExtResource("1_iopcb")]
+_textures_list = Array[String](["res://assets/Tiny Swords (Update 010)/Decoration/Pumpkins/12.png", "res://assets/Tiny Swords (Update 010)/Decoration/Pumpkins/13.png"])

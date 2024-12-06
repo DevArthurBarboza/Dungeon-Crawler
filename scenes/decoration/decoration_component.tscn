@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhx4nu1m1cxfq"]
+
+[ext_resource type="Script" path="res://scripts/decoration/decoration_component.gd" id="1_1ehlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60b3s"]
+size = Vector2(64, 64)
+
+[node name="DecorationComponent" type="Node2D"]
+script = ExtResource("1_1ehlf")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+centered = false
+offset = Vector2(0, -4)
+
+[node name="Texture2" type="Sprite2D" parent="."]
+centered = false
+offset = Vector2(16, 16)
+
+[node name="Texture3" type="Sprite2D" parent="."]
+centered = false
+offset = Vector2(-16, 16)
+
+[node name="PhysicsCollision" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="PhysicsCollision"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_60b3s")

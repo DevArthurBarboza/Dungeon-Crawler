@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxqjn1y2efbb6"]
+
+[ext_resource type="Script" path="res://scripts/character/BaseCharacter.gd" id="1_co115"]
+[ext_resource type="PackedScene" uid="uid://drjbdcg44opnr" path="res://scenes/effects/dust.tscn" id="2_gtc1k"]
+[ext_resource type="PackedScene" uid="uid://ccyyrre5g7pcj" path="res://scenes/character/Component/attack_component.tscn" id="4_ye7gj"]
+[ext_resource type="PackedScene" uid="uid://b4t5htfm4yk6a" path="res://scenes/character/Component/health_component.tscn" id="5_2528w"]
+[ext_resource type="PackedScene" uid="uid://d54c108227gl" path="res://scenes/character/Component/character_controller_component.tscn" id="6_3ct7q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ujecd"]
+resource_local_to_scene = true
+
+[node name="BaseCharacter" type="CharacterBody2D" node_paths=PackedStringArray("_sprite2D", "_dust", "_camera", "_attack_component", "_health_component", "_character_controller_component")]
+collision_layer = 9
+collision_mask = 9
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_co115")
+_sprite2D = NodePath("Texture")
+_dust = NodePath("Dust")
+_camera = NodePath("CharacterCamera")
+_attack_component = NodePath("AttackComponent")
+_health_component = NodePath("HealthComponent")
+_character_controller_component = NodePath("CharacterControllerComponent")
+
+[node name="Dust" parent="." instance=ExtResource("2_gtc1k")]
+amount = 16
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_ujecd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, -5.5)
+
+[node name="CharacterCamera" type="Camera2D" parent="."]
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_ye7gj")]
+min_damage = 5.0
+max_damage = 15.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_2528w")]
+position = Vector2(-65, -46)
+
+[node name="CharacterControllerComponent" parent="." instance=ExtResource("6_3ct7q")]

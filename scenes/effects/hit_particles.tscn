@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ifay17fnqieh"]
+
+[ext_resource type="Texture2D" uid="uid://ccn26cc710rdg" path="res://assets/Tiny Swords (Update 010)/Effects/dust.png" id="1_mqkvy"]
+
+[sub_resource type="Curve" id="Curve_nt7pt"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122186, 2), 0.0, 0.0, 0, 0, Vector2(0.610932, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_47hqy"]
+offsets = PackedFloat32Array(0, 0.777385, 0.989399)
+colors = PackedColorArray(1, 1, 1, 1, 0.424028, 0.424028, 0.424028, 1, 0, 0, 0, 1)
+
+[node name="HitParticles" type="CPUParticles2D"]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_mqkvy")
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 31.18
+initial_velocity_max = 45.73
+scale_amount_curve = SubResource("Curve_nt7pt")
+color_ramp = SubResource("Gradient_47hqy")

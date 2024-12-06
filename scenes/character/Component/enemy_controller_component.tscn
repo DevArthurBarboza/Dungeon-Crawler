@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0elo7ug8b7o"]
+
+[ext_resource type="Script" path="res://scripts/character/component/enemy_controller_component.gd" id="1_5qcbc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yn0h7"]
+
+[node name="EnemyControllerComponent" type="Node2D" node_paths=PackedStringArray("_detection_area", "_collision", "_run_timer", "_rest_timer")]
+script = ExtResource("1_5qcbc")
+_detection_area = NodePath("DetectionArea")
+_collision = NodePath("DetectionArea/CollisionArea")
+_run_timer = NodePath("RunTimer")
+_rest_timer = NodePath("RestTimer")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionArea" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_yn0h7")
+
+[node name="RunTimer" type="Timer" parent="."]
+
+[node name="RestTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="RunTimer" to="." method="_on_run_timer_timeout"]
+[connection signal="timeout" from="RestTimer" to="." method="_on_rest_timer_timeout"]

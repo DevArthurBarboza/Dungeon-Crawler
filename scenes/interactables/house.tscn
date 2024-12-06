@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://crkkpmhxuo8dq"]
+
+[ext_resource type="Script" path="res://scenes/interactables/house.gd" id="1_7biw4"]
+[ext_resource type="Texture2D" uid="uid://h3hxggd1d3a4" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/House/House_Construction.png" id="1_fnxq3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8ofe"]
+radius = 150.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7mt3"]
+size = Vector2(75, 70)
+
+[node name="House" type="StaticBody2D" node_paths=PackedStringArray("_sprite", "_production_timer")]
+script = ExtResource("1_7biw4")
+_sprite = NodePath("Sprite2D")
+_production_timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fnxq3")
+
+[node name="ContactArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="ContactArea"]
+shape = SubResource("CircleShape2D_c8ofe")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 32)
+shape = SubResource("RectangleShape2D_v7mt3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="ContactArea" to="." method="_on_house_area_body_entered"]
+[connection signal="body_exited" from="ContactArea" to="." method="_on_house_area_body_exited"]

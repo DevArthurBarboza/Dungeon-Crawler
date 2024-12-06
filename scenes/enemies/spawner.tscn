@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7jde1mx2fwpo"]
+
+[ext_resource type="Script" path="res://scripts/enemies/Spawner.gd" id="1_oha2l"]
+[ext_resource type="PackedScene" uid="uid://djnm02hx1i8uw" path="res://scenes/character/goblin.tscn" id="2_yjs8i"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_oha2l")
+monster_scene = ExtResource("2_yjs8i")
+spawn_interval = 5.0

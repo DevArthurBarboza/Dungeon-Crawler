@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccyyrre5g7pcj"]
+
+[ext_resource type="Script" path="res://scripts/character/component/AttackComponent.gd" id="1_hw5hn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fw7v"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3plh"]
+radius = 32.0
+
+[node name="AttackComponent" type="Node2D"]
+script = ExtResource("1_hw5hn")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_8fw7v")
+disabled = true
+
+[node name="AutoAttackArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="AutoAttackArea"]
+shape = SubResource("CircleShape2D_m3plh")
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="AutoAttackArea" to="." method="_on_auto_attack_area_body_entered"]

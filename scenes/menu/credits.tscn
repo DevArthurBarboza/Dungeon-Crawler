@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc6jd7bx38ele"]
+
+[ext_resource type="Texture2D" uid="uid://46agppw31m8h" path="res://assets/eu_meme.png" id="1_31t6u"]
+[ext_resource type="AudioStream" uid="uid://bbymwuim7n0c2" path="res://assets/Papai akita lançando a braba sobre PHP.mp3" id="2_dr8iw"]
+[ext_resource type="Script" path="res://scripts/menu/credits.gd" id="2_rf8s8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6cxi"]
+font_size = 55
+font_color = Color(0.264268, 0.625685, 0.62815, 1)
+
+[node name="Credit" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_31t6u")
+script = ExtResource("2_rf8s8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -397.5
+offset_top = -176.0
+offset_right = 397.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Arthur Desenvolvimentos"
+label_settings = SubResource("LabelSettings_u6cxi")
+uppercase = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dr8iw")
+volume_db = 16.138
+autoplay = true
+
+[node name="EndCredits" type="Timer" parent="."]
+
+[connection signal="timeout" from="EndCredits" to="." method="_on_end_credits_timeout"]
