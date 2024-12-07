@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7nul7n8k4fhn" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="2_yjf3i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5cdf"]
+resource_local_to_scene = true
 shader = ExtResource("2_ffvsi")
 shader_parameter/enabled = true
 shader_parameter/tint = Color(1, 1, 1, 1)

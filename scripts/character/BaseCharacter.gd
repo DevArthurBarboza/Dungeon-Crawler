@@ -6,6 +6,7 @@ class_name BaseCharacter
 #var _can_attack : bool = true
 #var _attack_animation_name : String = ""
 var _is_in_mountain : bool = false
+var hitted : bool = false
 
 
 @export_category('Variables')
@@ -52,7 +53,7 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
-	
+	#print(_delta)
 	_move()
 	_animate()
 	
@@ -91,13 +92,14 @@ func _animate() -> void :
 		_attack_component.auto_attack_area.position.x = -64
 		
 
-	if !_attack_component._can_attack: 
+	if !_attack_component._can_attack and !hitted: 
 		set_physics_process(false)
 		_animation.play(_attack_component._attack_animation_name)
 		return
 	
 	if !_health_component._can_hit:
-		set_physics_process(false)
+		#set_physics_process(false)
+		hitted = true
 		_animation.play(_health_component._animation_hit_name)
 		return
 
@@ -114,8 +116,7 @@ func _on_animation_finished(anim_name):
 		set_physics_process(true)
 	if anim_name == _health_component._animation_hit_name:
 		_health_component._can_hit = true
-		#_attack_component._attack_animation_name = ''
-		set_physics_process(true)
+		hitted = false
 	pass # Replace with function body.
 
 func update_collision_layer_mask(_type: String) -> void:

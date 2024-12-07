@@ -29,7 +29,6 @@ func _process(delta):
 func update_health(_damage_range : Array) -> void :
 	
 	if _health_component._is_dead:
-		print('already killed')
 		return
 		
 	_health_component.update_health([_damage_range[0],
@@ -39,9 +38,7 @@ func update_health(_damage_range : Array) -> void :
 	
 	if _health_component._is_dead :
 		_spawn_wood()
-		print('killed')
 		_animation.play('kill')
-		#set_process(false)
 		return
 
 	_animation.play('hit')
@@ -58,8 +55,6 @@ func _spawn_particles():
 func _on_animation_animation_finished(anim_name):
 	if anim_name == 'hit':
 		_animation.play('idle')
-	#if anim_name == 'kill':
-		#set_process(false)
 	pass # Replace with function body.
 
 func _spawn_wood():
@@ -70,7 +65,6 @@ func _spawn_wood():
 			randi_range(-32,32),
 			randi_range(-32,32)
 		)
-		
 		
 		get_parent().call_deferred("add_child", _wood)
 		

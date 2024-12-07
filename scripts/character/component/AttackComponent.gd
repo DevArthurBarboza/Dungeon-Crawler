@@ -79,8 +79,7 @@ func _on_auto_attack_area_body_entered(body):
 		body.get('is_controlled_by_player') and body.is_controlled_by_player and
 		body.has_node('HealthComponent') 
 	):
-		if auto_attack:
-			# Gera um índice aleatório (0 ou 1)
+		if auto_attack and _attack_animation_name == '':
 			var random_index = randi() % 2
 			_attack_animation_name = _right_attack_name if random_index else _left_attack_name
 			_can_attack = false
